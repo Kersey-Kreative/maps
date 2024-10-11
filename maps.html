@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalize Names</title>
+</head>
+<body>
+    <h1>Name Capitalization Program</h1>
+    <button id="addName">Add Name</button>
+    <button id="showResults">Show Results</button>
+    <pre id="originalArray"></pre>
+    <pre id="capitalizedArray"></pre>
+
+    <script>
+        // Array to store names
+        let names = [];
+
+        // Function to capitalize the first letter of each name
+        function capitalize(name) {
+            return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        }
+
+        // Event listener for adding names
+        document.getElementById('addName').addEventListener('click', function() {
+            let name = prompt("Enter a name:");
+            if (name) {
+                names.push(name);
+            }
+        });
+
+        // Event listener for showing results
+        document.getElementById('showResults').addEventListener('click', function() {
+            // Print the original array
+            document.getElementById('originalArray').textContent = 'Original Array: ' + JSON.stringify(names, null, 2);
+
+            // Use map to create a new array with capitalized names
+            let capitalizedNames = names.map(capitalize);
+
+            // Print the capitalized array
+            document.getElementById('capitalizedArray').textContent = 'Capitalized Array: ' + JSON.stringify(capitalizedNames, null, 2);
+        });
+    </script>
+</body>
+</html>
